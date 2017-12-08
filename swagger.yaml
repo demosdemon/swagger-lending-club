@@ -1137,7 +1137,7 @@ definitions:
         $ref: '#/definitions/SellNotesStatus'
       sellNoteConfirmations:
         type: array
-        item:
+        items:
           $ref: '#/definitions/SellNote'
   SellNotesStatus:
     type: string

@@ -40,7 +40,7 @@ namespace IO.Swagger.Model
         /// </summary>
         /// <param name="SellNotesStatus">SellNotesStatus.</param>
         /// <param name="SellNoteConfirmations">SellNoteConfirmations.</param>
-        public SellNotesResponse(SellNotesStatus? SellNotesStatus = default(SellNotesStatus?), List<> SellNoteConfirmations = default(List<>))
+        public SellNotesResponse(SellNotesStatus? SellNotesStatus = default(SellNotesStatus?), List<SellNote> SellNoteConfirmations = default(List<SellNote>))
         {
             this.SellNotesStatus = SellNotesStatus;
             this.SellNoteConfirmations = SellNoteConfirmations;
@@ -51,7 +51,7 @@ namespace IO.Swagger.Model
         /// Gets or Sets SellNoteConfirmations
         /// </summary>
         [DataMember(Name="sellNoteConfirmations", EmitDefaultValue=false)]
-        public List<> SellNoteConfirmations { get; set; }
+        public List<SellNote> SellNoteConfirmations { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
