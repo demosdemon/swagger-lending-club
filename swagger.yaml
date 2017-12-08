@@ -1,0 +1,987 @@
+swagger: "2.0"
+info:
+  description: "Lending Club API"
+  title: "Lending Club API"
+  version: "1.0"
+host: api.lendingclub.com
+basePath: /api/investor/v1
+schemes: [https]
+consumes: [application/json]
+produces: [application/json]
+securityDefinitions:
+  apiKey:
+    type: apiKey
+    name: Authorization
+    in: header
+security:
+  - apiKey: []
+parameters:
+  investor:
+    name: investor
+    in: path
+    required: true
+    type: integer
+    format: int32
+paths:
+  /accounts/{investor}/summary:
+    get:
+      tags: [Accounts]
+      operationId: Summary
+      responses:
+        200:
+          description: The account summary
+          schema:
+            $ref: '#/definitions/AccountSummary'
+  /accounts/{investor}/availablecash:
+    get:
+      tags: [Accounts]
+      operationId: AvailableCash
+      responses:
+        200:
+          description: Most up to date value of the cash available in the investor's account
+          schema:
+            $ref: '#/definitions/AvailableCash'
+  /accounts/{investor}/funds/add:
+    post:
+      tags: [Accounts, Funds]
+      operationId: Funds_Add
+      parameters:
+        - in: body
+          name: request
+          required: true
+          schema:
+            $ref: '#/definitions/ScheduledTransfer'
+      responses:
+        200:
+          description: The transfer request status
+          schema:
+            $ref: '#/definitions/ScheduledTransfer'
+  /accounts/{investor}/funds/withdraw:
+    post:
+      tags: [Accounts, Funds]
+      operationId: Funds_Withdraw
+      parameters:
+        - in: body
+          name: request
+          required: true
+          schema:
+            $ref: '#/definitions/ScheduledTransfer'
+      responses:
+        200:
+          description: The transfer request status
+          schema:
+            $ref: '#/definitions/ScheduledTransfer'
+  /accounts/{investor}/funds/pending:
+    get:
+      tags: [Accounts, Funds]
+      operationId: Funds_Pending
+      responses:
+        200:
+          description: The pending fund transfers for the investor's account
+          schema:
+            type: object
+            additionalProperties: false
+            properties:
+              transfers:
+                type: array
+                items:
+                  $ref: '#/definitions/Transfer'
+  /accounts/{investor}/funds/cancel:
+    post:
+      tags: [Accounts, Funds]
+      operationId: Funds_Cancel
+      parameters:
+        - in: body
+          name: request
+          required: true
+          schema:
+            $ref: '#/definitions/CancelTransferRequest'
+      responses:
+        200:
+          description: The cancellation status
+          schema:
+            $ref: '#/definitions/CancelTransferResponse'
+  /accounts/{investor}/notes:
+    get:
+      tags: [Accounts]
+      operationId: NotesOwned
+      responses:
+        200:
+          description: A list of notes that are owned by the investor.
+          schema:
+            type: object
+            additionalProperties: false
+            properties:
+              myNotes:
+                type: array
+                items:
+                  $ref: '#/definitions/Note'
+  /accounts/{investor}/detailednotes:
+    get:
+      tags: [Accounts]
+      operationId: DetailedNotesOwned
+      parameters:
+        - in: header
+          name: X-LC-DETAILED-NOTES-VERSION
+          type: string
+          enum:
+            - '1.1'
+      responses:
+        200:
+          description: A list of notes that are owned by the investor.
+          schema:
+            type: object
+            additionalProperties: false
+            properties:
+              myNotes:
+                type: array
+                items:
+                  $ref: '#/definitions/DetailedNote'
+  /accounts/{investor}/portfolios:
+    get:
+      tags: [Accounts]
+      operationId: PortfoliosOwned
+      responses:
+        200:
+          description: List of portfolios
+          schema:
+            type: object
+            additionalProperties: false
+            properties:
+              myPortfolios:
+                type: array
+                items:
+                  $ref: '#/definitions/Portfolio'
+    post:
+      tags: [Accounts]
+      operationId: CreatePortfolio
+      parameters:
+        - in: body
+          name: request
+          required: true
+          schema:
+            $ref: '#/definitions/CreatePortfolioRequest'
+      responses:
+        200:
+          description: The portfolio created
+          schema:
+            $ref: '#/definitions/Portfolio'
+  /accounts/{investor}/orders:
+    post:
+      tags: [Accounts]
+      operationId: SubmitOrder
+      parameters:
+        - in: body
+          name: orders
+          required: true
+          schema:
+            $ref: '#/definitions/SubmitOrderRequest'
+      responses:
+        200:
+          description: The status of each order
+          schema:
+            $ref: '#/definitions/SubmitOrderResponse'
+  /accounts/{investor}/filters:
+    get:
+      tags: [Accounts]
+      operationId: Filters
+      responses:
+        200:
+          description: The filters the investor has on the account
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Filter'
+  /loans/listing:
+    get:
+      tags: [Loans]
+      operationId: ListedLoans
+      parameters:
+        - in: query
+          name: filterId
+          type: integer
+        - in: query
+          name: showAll
+          type: boolean
+        - in: header
+          name: X-LC-LISTING-VERSION
+          type: string
+          enum:
+            - '1.1'
+            - '1.2'
+            - '1.3'
+      responses:
+        200:
+          description: Loans on sale
+          schema:
+            type: object
+            additionalProperties: false
+            properties:
+              asOfDate:
+                type: string
+                format: date-time
+              loans:
+                type: array
+                items:
+                  $ref: '#/definitions/ListedLoan'
+definitions:
+  AccountSummary:
+    type: object
+    additionalProperties: false
+    properties:
+      availableCash:
+        type: number
+        format: decimal
+        description: Available cash amount
+      investorId:
+        type: integer
+        format: int32
+        description: Investor ID
+      accruedInterest:
+        type: number
+        format: decimal
+        description: Accrued interest amount
+      outstandingPrincipal:
+        type: number
+        format: decimal
+        description: Outstanding principal amount
+      accountTotal:
+        type: number
+        format: decimal
+        description: Account total
+      totalNotes:
+        type: integer
+        format: int32
+        description: Total notes
+      totalPortfolios:
+        type: integer
+        format: int32
+        description: Total portfolios
+      inFundingBalance:
+        type: number
+        format: decimal
+        description: In-Funding balance
+      receivedInterest:
+        type: number
+        format: decimal
+        description: Received interest
+      receivedPrincipal:
+        type: number
+        format: decimal
+        description: Received principal
+      receivedLateFees:
+        type: number
+        format: decimal
+        description: Received late fees
+      netAnnualizedReturn:
+        $ref: '#/definitions/NetAnnualizedReturn'
+      adjustments:
+        $ref: '#/definitions/Adjustments'
+  NetAnnualizedReturn:
+    type: object
+    additionalProperties: false
+    properties:
+      primaryNAR:
+        type: number
+        format: decimal
+        description: Primary Net Annualized Return
+      primaryAdjustedNAR:
+        type: number
+        format: decimal
+        description: Primary Adjusted Net Annualized Return based on LendingClub's loss assumptions
+      primaryUserAdjustedNAR:
+        type: number
+        format: decimal
+        description: Primary Adjusted Net Annualized Return based on user's loss assumptions
+      tradedNAR:
+        type: number
+        format: decimal
+        description: Traded Net Annualized Return
+      tradedAdjustedNAR:
+        type: number
+        format: decimal
+        description: Traded Net Annualized Return based on LendingClub's loss assumptions
+      tradedUserAdjustedNAR:
+        type: number
+        format: decimal
+        description: Traded Adjusted Net Annualized Return based on user's loss assumptions
+      combinedNAR:
+        type: number
+        format: decimal
+        description: Combined Net Annualized Return
+      combinedAdjustedNAR:
+        type: number
+        format: decimal
+        description: Combined Net Annualized Return based on LendingClub's loss assumptions
+      combinedUserAdjustedNAR:
+        type: number
+        format: decimal
+        description: Combined Net Annualized Return based on user's loss assumptions
+  Adjustments:
+    type: object
+    additionalProperties: false
+    properties:
+      adjustmentForPastDueNotes:
+        type: number
+        format: decimal
+        description: Adjustments to Account Values for past due notes based on LendingClub's loss assumptions
+      userAdjustmentForPastDueNotes:
+        type: number
+        format: decimal
+        description: Adjustments to Account Values for past due notes based on user's loss assumptions
+  AvailableCash:
+    type: object
+    additionalProperties: false
+    properties:
+      investorId:
+        type: integer
+        format: int32
+        description: The id of the investor account
+      availableCash:
+        type: number
+        format: decimal
+        description: Available cash amount
+  ScheduledTransfer:
+    type: object
+    additionalProperties: false
+    properties:
+      investorId:
+        type: integer
+        format: int32
+        readOnly: true
+        description: The id of the investor account
+      amount:
+        type: number
+        format: decimal
+        description: Add Fund amount
+      transferFrequency:
+        $ref: '#/definitions/TransferFrequency'
+      startDate:
+        type: string
+        format: date
+        description: Required if transferFrequency != LOAD_NOW
+      endDate:
+        type: string
+        format: date
+        description: Recurring transfer end date
+      estimatedFundsTransferDate:
+        type: string
+        format: date
+        readOnly: true
+        description: Estimated funds transfer start date
+    required:
+      - amount
+  TransferFrequency:
+    type: string
+    enum:
+      - LOAD_NOW
+      - LOAD_ONCE
+      - LOAD_WEEKLY
+      - LOAD_BIWEEKLY
+      - LOAD_ON_DAY_1_AND_16
+      - LOAD_MONTHLY
+    description: Frequency of transfer
+  Transfer:
+    type: object
+    additionalProperties: false
+    properties:
+      transferId:
+        type: integer
+        format: int32
+        description: Transfer transaction id
+      transferDate:
+        type: string
+        format: date
+        description: Transfer scheduled date
+      amount:
+        type: number
+        format: decimal
+        description: Transfer amount
+      sourceAccount:
+        type: string
+        description: Transfer source account
+      status:
+        type: string
+        description: Status of the scheduled transfer
+      frequency:
+        $ref: '#/definitions/TransferFrequency'
+      endDate:
+        type: string
+        format: date
+        description: Recurring transfer end date
+      operation:
+        type: string
+        enum:
+          - ADD_FUNDS
+          - WITHDRAW_FUNDS
+      cancellable:
+        type: boolean
+  CancelTransferRequest:
+    type: object
+    additionalProperties: false
+    properties:
+      transferIds:
+        type: array
+        items:
+          type: integer
+          format: int32
+          description: Transfer ID
+        minItems: 1
+    required:
+      - transferIds
+  CancelTransferResponse:
+    type: object
+    additionalProperties: false
+    properties:
+      investorId:
+        type: integer
+        format: int32
+      cancellationResults:
+        type: array
+        items:
+          $ref: '#/definitions/CancellationResult'
+  CancellationResult:
+    type: object
+    additionalProperties: false
+    properties:
+      transferId:
+        type: integer
+      status:
+        type: string
+        enum:
+          - ERROR
+          - CANCELLED
+      message:
+        type: string
+  Note:
+    type: object
+    additionalProperties: false
+    properties:
+      loanId:
+        type: integer
+        format: int64
+      noteId:
+        type: integer
+        format: int64
+      orderId:
+        type: integer
+        format: int64
+      interestRate:
+        type: integer
+        format: decimal
+      loanLength:
+        type: integer
+        format: int32
+        minimum: 0
+        maximum: 60
+      loanStatus:
+        $ref: '#/definitions/LoanStatus'
+      grade:
+        $ref: '#/definitions/LoanGrade'
+      loanAmount:
+        type: number
+        format: decimal
+      noteAmount:
+        type: number
+        format: decimal
+      paymentsReceived:
+        type: number
+        format: decimal
+      issueDate:
+        type: string
+        format: date-time
+      orderDate:
+        type: string
+        format: date-time
+      loanStatusDate:
+        type: string
+        format: date-time
+  LoanStatus:
+    type: string
+    enum:
+      - Issued
+      - Current
+      - In Grace Period
+      - Late (16-30 days)
+      - Late (31-120 days)
+      - Default
+      - Charged Off
+      - Fully Paid
+  LoanGrade:
+    type: string
+    enum: [A, B, C, D, E, F, G, A1, A2, A3, A4, A5, B1, B2, B3, B4, B5, C1, C2, C3,
+    C4, C5, D1, D2, D3, D4, D5, E1, E2, E3, E4, E5, G1, G2, G3, G4, G5]
+  DetailedNote:
+    allOf:
+      - $ref: '#/definitions/Note'
+      - type: object
+        additionalProperties: false
+        properties:
+          purpose:
+            type: string
+          currentPaymentStatus:
+            $ref: '#/definitions/PaymentStatus'
+          canBeTraded:
+            type: boolean
+          creditTrend:
+            $ref: '#/definitions/CreditTrend'
+          accruedInterest:
+            type: number
+            format: decimal
+          principalPending:
+            type: number
+            format: decimal
+          interestPending:
+            type: number
+            format: decimal
+          principalReceived:
+            type: number
+            format: decimal
+          interestReceived:
+            type: number
+            format: decimal
+          applicationType:
+            $ref: '#/definitions/ApplicationType'
+          disbursementMethod:
+            $ref: '#/definitions/DisbursementMethod'
+  DisbursementMethod:
+    type: string
+    enum:
+      - CASH
+      - DIRECT_PAY
+  ApplicationType:
+    type: string
+    enum:
+      - INDIVIDUAL
+      - JOINT
+      - DIRECT_PAY
+  PaymentStatus:
+    type: string
+    enum:
+      - Scheduled
+      - Processing...
+      - Completed
+      - Overdue
+      - Paid Off
+      - ChargedOff
+  CreditTrend:
+    type: string
+    enum:
+      - UP
+      - FLAT
+      - DOWN
+  Portfolio:
+    type: object
+    additionalProperties: false
+    properties:
+      portfolioId:
+        type: integer
+      portfolioName:
+        type: string
+      portfolioDescription:
+        type: string
+  CreatePortfolioRequest:
+    type: object
+    additionalProperties: false
+    properties:
+      actorId:
+        type: integer
+        description: The investor id
+      portfolioName:
+        type: string
+      portfolioDescription:
+        type: string
+    required:
+      - actorId
+      - portfolioName
+  SubmitOrderRequest:
+    type: object
+    additionalProperties: false
+    properties:
+      aid:
+        type: integer
+        description: The investor id
+      orders:
+        type: array
+        items:
+          $ref: '#/definitions/NewOrder'
+        minItems: 1
+    required:
+      - aid
+      - orders
+  NewOrder:
+    type: object
+    additionalProperties: false
+    properties:
+      loadId:
+        type: integer
+      requestedAmount:
+        type: number
+        format: decimal
+      portfolioId:
+        type: integer
+    required:
+      - loanId
+      - requestedAmount
+  ExecutionStatus:
+    type: string
+    enum:
+      - ORDER_FULFILLED
+      - LOAN_AMNT_EXCEEDED
+      - NOT_AN_INFUNDING_LOAN
+      - REQUESTED_AMNT_LOW
+      - REQUESTED_AMNT_ROUNDED
+      - AUGMENTED_BY_MERGE
+      - ELIM_BY_MERGE
+      - INSUFFICIENT_CASH
+      - NOT_AN_INVESTOR
+      - NOT_A_VALID_INVESTMENT
+      - NOTE_ADDED_TO_PORTFOLIO
+      - NOT_A_VALID_PORTFOLIO
+      - ERROR_ADDING_NOTE_TO_PORTFOLIO
+      - SYSTEM_BUSY
+      - UNKNOWN_ERROR
+  SubmitOrderResponse:
+    type: object
+    additionalProperties: false
+    properties:
+      orderInstructId:
+        type: integer
+      orderConfirmations:
+        type: array
+        items:
+          $ref: '#/definitions/OrderStatus'
+  OrderStatus:
+    type: object
+    additionalProperties: false
+    properties:
+      loanId:
+        type: integer
+      requestedAmount:
+        type: number
+        format: decimal
+      investedAmount:
+        type: number
+        format: decimal
+      executionStatus:
+        type: array
+        items:
+          $ref: '#/definitions/ExecutionStatus'
+  Filter:
+    type: object
+    additionalProperties: false
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+  IncomeVerified:
+    type: string
+    enum:
+      - NOT_VERIFIED
+      - SOURCE_VERIFIED
+      - VERIFIED
+  ListedLoan:
+    type: object
+    additionalProperties: true
+    properties:
+      id:
+        type: integer
+      memberId:
+        type: integer
+      loanAmount:
+        type: number
+        format: decimal
+      fundedAmount:
+        type: number
+        format: decimal
+      term:
+        type: integer
+      intRate:
+        type: number
+        format: decimal
+      expDefaultRate:
+        type: number
+        format: decimal
+      serviceFeeRate:
+        type: number
+        format: decimal
+      installment:
+        type: number
+        format: decimal
+      grade:
+        $ref: '#/definitions/LoanGrade'
+      subGrade:
+        $ref: '#/definitions/LoanGrade'
+      empLength:
+        type: integer
+      homeOwnership:
+        type: string
+        enum:
+          - RENT
+          - OWN
+          - MORTGAGE
+          - OTHER
+      annualInc:
+        type: number
+        format: decimal
+      isIncV:
+        $ref: '#/definitions/IncomeVerified'
+      acceptD:
+        type: string
+        format: date-time
+      expD:
+        type: string
+        format: date-time
+      listD:
+        type: string
+        format: date-time
+      creditPullD:
+        type: string
+        format: date-time
+      reviewStatusD:
+        type: string
+        format: date-time
+      reviewStatus:
+        type: string
+        enum:
+          - APPROVED
+          - NOT_APPROVED
+      desc:
+        type: string
+      purpose:
+        type: string
+        enum:
+          - debt_consolidation
+          - medical
+          - home_improvement
+          - renewable_energy
+          - small_business
+          - wedding
+          - vacation
+          - moving
+          - house
+          - car
+          - major_purchase
+          - credit_card
+          - other
+      addrZip:
+        type: string
+      investorCount:
+        type: integer
+      ilsExpD:
+        type: string
+        format: date-time
+      initialListStatus:
+        type: string
+        enum:
+          - W
+          - F
+      empTitle:
+        type: string
+      accNowDelinq:
+        type: integer
+      accOpenPast24Mths:
+        type: integer
+      bcOpenToBuy:
+        type: integer
+      percentBcGt75:
+        type: integer
+      percentBcGt75:
+        type: number
+        format: decimal
+      bcUtil:
+        type: number
+        format: decimal
+      dti:
+        type: number
+        format: decimal
+      delinq2Yrs:
+        type: integer
+      delinqAmnt:
+        type: number
+        format: decimal
+      earliestCrLine:
+        type: string
+        format: date-time
+      ficoRangeLow:
+        type: integer
+      ficoRangeHigh:
+        type: integer
+      inqLast6Mths:
+        type: integer
+      mthsSinceLastDelinq:
+        type: integer
+      mthsSinceLastRecord:
+        type: integer
+      mthsSinceRecentInq:
+        type: integer
+      mthsSinceRecentBc:
+        type: integer
+      mortAcc:
+        type: integer
+      openAcc:
+        type: integer
+      pubRec:
+        type: integer
+      totalBalExMort:
+        type: integer
+      revolBal:
+        type: number
+        format: decimal
+      revolUtil:
+        type: number
+        format: decimal
+      totalBcLimit:
+        type: integer
+      totalAcc:
+        type: integer
+      totalIlHighCreditLimit:
+        type: integer
+      numRevAccts:
+        type: integer
+      mthsSinceRecentBcDlq:
+        type: integer
+      pubRecBankruptcies:
+        type: integer
+      numAcctsEver120Ppd:
+        type: integer
+      chargeoffWithin12Mths:
+        type: integer
+      collections12MthsExMed:
+        type: integer
+      taxLiens:
+        type: integer
+      mthsSinceLastMajorDerog:
+        type: integer
+      numSats:
+        type: integer
+      numTlOpPast12m:
+        type: integer
+      moSinRcntTl:
+        type: integer
+      totHiCredLim:
+        type: integer
+      totCurBal:
+        type: integer
+      avgCurBal:
+        type: integer
+      numActvBcTl:
+        type: integer
+      numBcSats:
+        type: integer
+      pctTlNvrDlq:
+        type: integer
+      numTl90gDpd24m:
+        type: integer
+      numTl30dpd:
+        type: integer
+      numTl120dpd2m:
+        type: integer
+      numIlTl:
+        type: integer
+      moSinOldIlAcct:
+        type: integer
+      numActvRevTl:
+        type: integer
+      moSinOldRevTlOp:
+        type: integer
+      moSinRcntRevTlOp:
+        type: integer
+      totalRevHiLim:
+        type: integer
+      numRevTlBalGt0:
+        type: integer
+      numOpRevTl:
+        type: integer
+      totCollAmt:
+        type: integer
+      fundedAmount:
+        type: number
+        format: decimal
+      loanAmount:
+        type: number
+        format: decimal
+      applicationType:
+        $ref: '#/definitions/ApplicationType'
+      disbursementMethod:
+        $ref: '#/definitions/DisbursementMethod'
+      annualIncJoint:
+        type: number
+        format: decimal
+      dtiJoint:
+        type: number
+        format: decimal
+      isIncVJoint:
+        $ref: '#/definitions/IncomeVerified'
+      openAcc6m:
+        type: integer
+      openIl6m:
+        type: integer
+      openActIl:
+        type: integer
+      openIl12m:
+        type: integer
+      openIl24m:
+        type: integer
+      mthsSinceRcntIl:
+        type: integer
+      totalBalIl:
+        type: number
+        format: decimal
+      iLUtil:
+        type: number
+        format: decimal
+      openRv12m:
+        type: integer
+      openRv24m:
+        type: integer
+      maxBalBc:
+        type: number
+        format: decimal
+      allUtil:
+        type: number
+        format: decimal
+      inqFi:
+        type: integer
+      totalCuTl:
+        type: integer
+      inqLast12m:
+        type: integer
+      mtgPayment:
+        type: number
+        format: decimal
+      housingPayment:
+        type: number
+        format: decimal
+      revolBalJoint:
+        type: number
+        format: decimal
+      secAppFicoRangeLow:
+        type: integer
+      secAppFicoRangeHigh:
+        type: integer
+      secAppEarliestCrLine:
+        type: string
+        format: date-time
+      secAppInqLast6Mths:
+        type: integer
+      secAppMortAcc:
+        type: integer
+      secAppOpenAcc:
+        type: integer
+      secAppRevolUtil:
+        type: number
+        format: decimal
+      secAppOpenIl6m:
+        type: integer
+      secAppOpenActIl:
+        type: integer
+      secAppNumRevAccts:
+        type: integer
+      secAppChargeoffWithin12Mths:
+        type: integer
+      secAppCollections12MthsExMed:
+        type: integer
+      secAppMthsSinceLastMajorDerog:
+        type: integer
