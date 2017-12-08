@@ -27,6 +27,8 @@ paths:
     get:
       tags: [Accounts]
       operationId: Summary
+      parameters:
+        - $ref: '#/parameters/investor'
       responses:
         200:
           description: The account summary
@@ -36,6 +38,8 @@ paths:
     get:
       tags: [Accounts]
       operationId: AvailableCash
+      parameters:
+        - $ref: '#/parameters/investor'
       responses:
         200:
           description: Most up to date value of the cash available in the investor's account
@@ -46,6 +50,7 @@ paths:
       tags: [Accounts, Funds]
       operationId: Funds_Add
       parameters:
+        - $ref: '#/parameters/investor'
         - in: body
           name: request
           required: true
@@ -61,6 +66,7 @@ paths:
       tags: [Accounts, Funds]
       operationId: Funds_Withdraw
       parameters:
+        - $ref: '#/parameters/investor'
         - in: body
           name: request
           required: true
@@ -75,6 +81,8 @@ paths:
     get:
       tags: [Accounts, Funds]
       operationId: Funds_Pending
+      parameters:
+        - $ref: '#/parameters/investor'
       responses:
         200:
           description: The pending fund transfers for the investor's account
@@ -85,6 +93,7 @@ paths:
       tags: [Accounts, Funds]
       operationId: Funds_Cancel
       parameters:
+        - $ref: '#/parameters/investor'
         - in: body
           name: request
           required: true
@@ -99,6 +108,8 @@ paths:
     get:
       tags: [Accounts]
       operationId: NotesOwned
+      parameters:
+        - $ref: '#/parameters/investor'
       responses:
         200:
           description: A list of notes that are owned by the investor.
@@ -109,6 +120,7 @@ paths:
       tags: [Accounts]
       operationId: DetailedNotesOwned
       parameters:
+        - $ref: '#/parameters/investor'
         - in: header
           name: X-LC-DETAILED-NOTES-VERSION
           type: string
@@ -123,6 +135,8 @@ paths:
     get:
       tags: [Accounts]
       operationId: PortfoliosOwned
+      parameters:
+        - $ref: '#/parameters/investor'
       responses:
         200:
           description: List of portfolios
@@ -147,6 +161,7 @@ paths:
       tags: [Accounts]
       operationId: SubmitOrder
       parameters:
+        - $ref: '#/parameters/investor'
         - in: body
           name: orders
           required: true
@@ -161,6 +176,8 @@ paths:
     get:
       tags: [Accounts]
       operationId: Filters
+      parameters:
+        - $ref: '#/parameters/investor'
       responses:
         200:
           description: The filters the investor has on the account
