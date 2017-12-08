@@ -102,19 +102,17 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**CreatePortfolio**](docs/AccountsApi.md#createportfolio) | **POST** /accounts/{investor}/portfolios | 
 *AccountsApi* | [**DetailedNotesOwned**](docs/AccountsApi.md#detailednotesowned) | **GET** /accounts/{investor}/detailednotes | 
 *AccountsApi* | [**Filters**](docs/AccountsApi.md#filters) | **GET** /accounts/{investor}/filters | 
-*AccountsApi* | [**FundsAdd**](docs/AccountsApi.md#fundsadd) | **POST** /accounts/{investor}/funds/add | 
-*AccountsApi* | [**FundsCancel**](docs/AccountsApi.md#fundscancel) | **POST** /accounts/{investor}/funds/cancel | 
-*AccountsApi* | [**FundsPending**](docs/AccountsApi.md#fundspending) | **GET** /accounts/{investor}/funds/pending | 
-*AccountsApi* | [**FundsWithdraw**](docs/AccountsApi.md#fundswithdraw) | **POST** /accounts/{investor}/funds/withdraw | 
 *AccountsApi* | [**NotesOwned**](docs/AccountsApi.md#notesowned) | **GET** /accounts/{investor}/notes | 
 *AccountsApi* | [**PortfoliosOwned**](docs/AccountsApi.md#portfoliosowned) | **GET** /accounts/{investor}/portfolios | 
 *AccountsApi* | [**SubmitOrder**](docs/AccountsApi.md#submitorder) | **POST** /accounts/{investor}/orders | 
 *AccountsApi* | [**Summary**](docs/AccountsApi.md#summary) | **GET** /accounts/{investor}/summary | 
-*FundsApi* | [**FundsAdd**](docs/FundsApi.md#fundsadd) | **POST** /accounts/{investor}/funds/add | 
-*FundsApi* | [**FundsCancel**](docs/FundsApi.md#fundscancel) | **POST** /accounts/{investor}/funds/cancel | 
-*FundsApi* | [**FundsPending**](docs/FundsApi.md#fundspending) | **GET** /accounts/{investor}/funds/pending | 
-*FundsApi* | [**FundsWithdraw**](docs/FundsApi.md#fundswithdraw) | **POST** /accounts/{investor}/funds/withdraw | 
+*FundsApi* | [**Add**](docs/FundsApi.md#add) | **POST** /accounts/{investor}/funds/add | 
+*FundsApi* | [**Cancel**](docs/FundsApi.md#cancel) | **POST** /accounts/{investor}/funds/cancel | 
+*FundsApi* | [**Pending**](docs/FundsApi.md#pending) | **GET** /accounts/{investor}/funds/pending | 
+*FundsApi* | [**Withdraw**](docs/FundsApi.md#withdraw) | **POST** /accounts/{investor}/funds/withdraw | 
 *LoansApi* | [**ListedLoans**](docs/LoansApi.md#listedloans) | **GET** /loans/listing | 
+*TradesApi* | [**BuyNotes**](docs/TradesApi.md#buynotes) | **POST** /accounts/{investor}/trades/buy | 
+*TradesApi* | [**SellNotes**](docs/TradesApi.md#sellnotes) | **POST** /accounts/{investor}/trades/sell | 
 
 
 <a name="documentation-for-models"></a>
@@ -124,6 +122,9 @@ Class | Method | HTTP request | Description
  - [Model.Adjustments](docs/Adjustments.md)
  - [Model.ApplicationType](docs/ApplicationType.md)
  - [Model.AvailableCash](docs/AvailableCash.md)
+ - [Model.BuyNote](docs/BuyNote.md)
+ - [Model.BuyNotesRequest](docs/BuyNotesRequest.md)
+ - [Model.BuyNotesResponse](docs/BuyNotesResponse.md)
  - [Model.CancelTransferRequest](docs/CancelTransferRequest.md)
  - [Model.CancelTransferResponse](docs/CancelTransferResponse.md)
  - [Model.CancellationResult](docs/CancellationResult.md)
@@ -147,6 +148,9 @@ Class | Method | HTTP request | Description
  - [Model.Portfolio](docs/Portfolio.md)
  - [Model.PortfoliosOwned](docs/PortfoliosOwned.md)
  - [Model.ScheduledTransfer](docs/ScheduledTransfer.md)
+ - [Model.SellNote](docs/SellNote.md)
+ - [Model.SellNotesRequest](docs/SellNotesRequest.md)
+ - [Model.SellNotesResponse](docs/SellNotesResponse.md)
  - [Model.SubmitOrderRequest](docs/SubmitOrderRequest.md)
  - [Model.SubmitOrderResponse](docs/SubmitOrderResponse.md)
  - [Model.Transfer](docs/Transfer.md)

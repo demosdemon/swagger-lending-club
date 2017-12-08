@@ -4,15 +4,15 @@ All URIs are relative to *https://api.lendingclub.com/api/investor/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**FundsAdd**](FundsApi.md#fundsadd) | **POST** /accounts/{investor}/funds/add | 
-[**FundsCancel**](FundsApi.md#fundscancel) | **POST** /accounts/{investor}/funds/cancel | 
-[**FundsPending**](FundsApi.md#fundspending) | **GET** /accounts/{investor}/funds/pending | 
-[**FundsWithdraw**](FundsApi.md#fundswithdraw) | **POST** /accounts/{investor}/funds/withdraw | 
+[**Add**](FundsApi.md#add) | **POST** /accounts/{investor}/funds/add | 
+[**Cancel**](FundsApi.md#cancel) | **POST** /accounts/{investor}/funds/cancel | 
+[**Pending**](FundsApi.md#pending) | **GET** /accounts/{investor}/funds/pending | 
+[**Withdraw**](FundsApi.md#withdraw) | **POST** /accounts/{investor}/funds/withdraw | 
 
 
-<a name="fundsadd"></a>
-# **FundsAdd**
-> ScheduledTransfer FundsAdd (int? investor, ScheduledTransfer request)
+<a name="add"></a>
+# **Add**
+> ScheduledTransfer Add (int? investor, ScheduledTransfer request)
 
 
 
@@ -26,7 +26,7 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class FundsAddExample
+    public class AddExample
     {
         public void main()
         {
@@ -41,12 +41,12 @@ namespace Example
 
             try
             {
-                ScheduledTransfer result = apiInstance.FundsAdd(investor, request);
+                ScheduledTransfer result = apiInstance.Add(investor, request);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling FundsApi.FundsAdd: " + e.Message );
+                Debug.Print("Exception when calling FundsApi.Add: " + e.Message );
             }
         }
     }
@@ -75,9 +75,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="fundscancel"></a>
-# **FundsCancel**
-> CancelTransferResponse FundsCancel (int? investor, CancelTransferRequest request)
+<a name="cancel"></a>
+# **Cancel**
+> CancelTransferResponse Cancel (int? investor, CancelTransferRequest request)
 
 
 
@@ -91,7 +91,7 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class FundsCancelExample
+    public class CancelExample
     {
         public void main()
         {
@@ -106,12 +106,12 @@ namespace Example
 
             try
             {
-                CancelTransferResponse result = apiInstance.FundsCancel(investor, request);
+                CancelTransferResponse result = apiInstance.Cancel(investor, request);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling FundsApi.FundsCancel: " + e.Message );
+                Debug.Print("Exception when calling FundsApi.Cancel: " + e.Message );
             }
         }
     }
@@ -140,9 +140,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="fundspending"></a>
-# **FundsPending**
-> Transfers FundsPending (int? investor)
+<a name="pending"></a>
+# **Pending**
+> Transfers Pending (int? investor)
 
 
 
@@ -156,7 +156,7 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class FundsPendingExample
+    public class PendingExample
     {
         public void main()
         {
@@ -170,12 +170,12 @@ namespace Example
 
             try
             {
-                Transfers result = apiInstance.FundsPending(investor);
+                Transfers result = apiInstance.Pending(investor);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling FundsApi.FundsPending: " + e.Message );
+                Debug.Print("Exception when calling FundsApi.Pending: " + e.Message );
             }
         }
     }
@@ -203,9 +203,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="fundswithdraw"></a>
-# **FundsWithdraw**
-> ScheduledTransfer FundsWithdraw (int? investor, ScheduledTransfer request)
+<a name="withdraw"></a>
+# **Withdraw**
+> ScheduledTransfer Withdraw (int? investor, ScheduledTransfer request)
 
 
 
@@ -219,7 +219,7 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class FundsWithdrawExample
+    public class WithdrawExample
     {
         public void main()
         {
@@ -234,12 +234,12 @@ namespace Example
 
             try
             {
-                ScheduledTransfer result = apiInstance.FundsWithdraw(investor, request);
+                ScheduledTransfer result = apiInstance.Withdraw(investor, request);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling FundsApi.FundsWithdraw: " + e.Message );
+                Debug.Print("Exception when calling FundsApi.Withdraw: " + e.Message );
             }
         }
     }

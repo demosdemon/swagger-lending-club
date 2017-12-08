@@ -47,8 +47,8 @@ paths:
             $ref: '#/definitions/AvailableCash'
   /accounts/{investor}/funds/add:
     post:
-      tags: [Accounts, Funds]
-      operationId: Funds_Add
+      tags: [Funds]
+      operationId: Add
       parameters:
         - $ref: '#/parameters/investor'
         - in: body
@@ -63,8 +63,8 @@ paths:
             $ref: '#/definitions/ScheduledTransfer'
   /accounts/{investor}/funds/withdraw:
     post:
-      tags: [Accounts, Funds]
-      operationId: Funds_Withdraw
+      tags: [Funds]
+      operationId: Withdraw
       parameters:
         - $ref: '#/parameters/investor'
         - in: body
@@ -79,8 +79,8 @@ paths:
             $ref: '#/definitions/ScheduledTransfer'
   /accounts/{investor}/funds/pending:
     get:
-      tags: [Accounts, Funds]
-      operationId: Funds_Pending
+      tags: [Funds]
+      operationId: Pending
       parameters:
         - $ref: '#/parameters/investor'
       responses:
@@ -90,8 +90,8 @@ paths:
             $ref: '#/definitions/Transfers'
   /accounts/{investor}/funds/cancel:
     post:
-      tags: [Accounts, Funds]
-      operationId: Funds_Cancel
+      tags: [Funds]
+      operationId: Cancel
       parameters:
         - $ref: '#/parameters/investor'
         - in: body
@@ -208,6 +208,38 @@ paths:
           description: Loans on sale
           schema:
             $ref: '#/definitions/ListedLoans'
+  /accounts/{investor}/trades/buy:
+    post:
+      tags: [Trades]
+      operationId: BuyNotes
+      parameters:
+        - $ref: '#/parameters/investor'
+        - in: body
+          name: buyNotes
+          required: true
+          schema:
+            $ref: '#/definitions/BuyNotesRequest'
+      responses:
+        200:
+          description: Purchase notes on the secondary market
+          schema:
+            $ref: '#/definitions/BuyNotesResponse'
+  /accounts/{investor}/trades/sell:
+    post:
+      tags: [Trades]
+      operationId: SellNotes
+      parameters:
+        - $ref: '#/parameters/investor'
+        - in: body
+          name: sellNotes
+          required: true
+          schema:
+            $ref: '#/definitions/SellNotesRequest'
+      responses:
+        200:
+          description: Sell notes on the secondary market
+          schema:
+            $ref: '#/definitions/SellNotesResponse'
 definitions:
   AccountSummary:
     type: object
@@ -1012,3 +1044,148 @@ definitions:
         type: integer
       secAppMthsSinceLastMajorDerog:
         type: integer
+  BuyNotesRequest:
+    type: object
+    additionalProperties: false
+    properties:
+      aid:
+        type: integer
+        name: InvestorId
+        description: The investor id
+      notes:
+        type: array
+        items:
+          $ref: '#/definitions/BuyNote'
+        minItems: 1
+    required:
+      - aid
+      - notes
+  BuyNote:
+    type: object
+    additionalProperties: false
+    properties:
+      loanId:
+        type: integer
+        required: true
+      orderId:
+        type: integer
+        required: true
+      noteId:
+        type: integer
+        required: true
+      bidPrice:
+        type: number
+        format: decimal
+        required: true
+      outstandingAccruedInterest:
+        type: number
+        format: decimal
+        readOnly: true
+      outstandingPrincipal:
+        type: number
+        format: decimal
+        readonly: true
+      yieldToMaturity:
+        type: number
+        format: decimal
+        readonly: true
+      executionStatus:
+        type: array
+        items:
+          type: string
+          enum:
+            - SUCCESS_PENDING_SETTLEMENT
+            - NOTE_ALREADY_OWNED
+            - NOTE_DATA_STALE
+            - NOTE_NOT_AVAILABLE
+            - NOTE_DOES_NOT_EXIST
+            - INSUFFICIENT_CASH
+            - UNKNOWN_ERROR
+  BuyNotesResponse:
+    type: object
+    additionalProperties: false
+    properties:
+      buyNoteConfirmations:
+        type: array
+        items:
+          $ref: '#/definitions/BuyNote'
+  SellNotesRequest:
+    type: object
+    additionalProperties: false
+    properties:
+      aid:
+        type: integer
+        name: InvestorId
+        description: The investor id
+        required: true
+      expireDate:
+        type: string
+        format: date
+        required: true
+      notes:
+        type: array
+        minItems: 1
+        required: true
+        items:
+          $ref: '#/definitions/SellNote'
+  SellNote:
+    type: object
+    additionalProperties: false
+    properties:
+      loanId:
+        type: integer
+        required: true
+      orderId:
+        type: integer
+        required: true
+      noteId:
+        type: integer
+        required: true
+      askingPrice:
+        type: number
+        format: decimal
+        required: true
+      executionStatus:
+        type: array
+        readOnly: true
+        items:
+          type: string
+          enum:
+            - SUCCESS_LISTING_FOR_SALE
+            - NOTE_NOT_AVAILABLE
+            - INVALID_ORDER_EXPIRATION_DATE
+            - DATE_TOO_EARLY
+            - DATE_TOO_LATE
+            - UNKNOWN_ERROR
+            - ASKING_PRICE_MUST_BE_POSITIVE
+            - ASKING_PRICE_IS_TOO_HIGH
+            - ASKING_PRICE_MUST_BE_VALID
+            - ASKING_PRICE_VALIDATION_ERROR
+            - NEGATIVE_YTM_FOR_ASKING_PRICE
+            - CANNOT_SELL_NOTE_IN_PAYMENT_PROCESSING
+            - ALREADY_SOLD
+            - CANNOT_SELL_NOTES
+            - NOTES_ARE_NOT_YOURS
+            - INVALID_SELL_PRICE
+            - UNEXPECTED_ERROR
+            - PENDING_BANKRUPTCY
+            - NOTE_DOES_NOT_EXIST
+            - NOTE_NOT_ISSUED
+  SellNotesResponse:
+    type: object
+    additionalProperties: false
+    properties:
+      sellNotesStatus:
+        type: string
+        enum:
+          - SUCCESS
+          - ERROR
+          - NO_LOANS_TO_SELL
+          - INVALID_ORDER_EXPIRATION_DATE
+          - ORDER_EXPIRE_DATE_TOO_SHORT
+          - ORDER_EXPIRE_DATE_TOO_LONG
+          - UNEXPECTED_ERROR
+      sellNoteConfirmations:
+        type: array
+        item:
+          $ref: '#/definitions/SellNote'

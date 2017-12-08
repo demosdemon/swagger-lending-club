@@ -34,7 +34,7 @@ namespace IO.Swagger.Api
         /// <param name="investor"></param>
         /// <param name="request"></param>
         /// <returns>ScheduledTransfer</returns>
-        ScheduledTransfer FundsAdd (int? investor, ScheduledTransfer request);
+        ScheduledTransfer Add (int? investor, ScheduledTransfer request);
 
         /// <summary>
         /// 
@@ -46,7 +46,7 @@ namespace IO.Swagger.Api
         /// <param name="investor"></param>
         /// <param name="request"></param>
         /// <returns>ApiResponse of ScheduledTransfer</returns>
-        ApiResponse<ScheduledTransfer> FundsAddWithHttpInfo (int? investor, ScheduledTransfer request);
+        ApiResponse<ScheduledTransfer> AddWithHttpInfo (int? investor, ScheduledTransfer request);
         /// <summary>
         /// 
         /// </summary>
@@ -57,7 +57,7 @@ namespace IO.Swagger.Api
         /// <param name="investor"></param>
         /// <param name="request"></param>
         /// <returns>CancelTransferResponse</returns>
-        CancelTransferResponse FundsCancel (int? investor, CancelTransferRequest request);
+        CancelTransferResponse Cancel (int? investor, CancelTransferRequest request);
 
         /// <summary>
         /// 
@@ -69,7 +69,7 @@ namespace IO.Swagger.Api
         /// <param name="investor"></param>
         /// <param name="request"></param>
         /// <returns>ApiResponse of CancelTransferResponse</returns>
-        ApiResponse<CancelTransferResponse> FundsCancelWithHttpInfo (int? investor, CancelTransferRequest request);
+        ApiResponse<CancelTransferResponse> CancelWithHttpInfo (int? investor, CancelTransferRequest request);
         /// <summary>
         /// 
         /// </summary>
@@ -79,7 +79,7 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="investor"></param>
         /// <returns>Transfers</returns>
-        Transfers FundsPending (int? investor);
+        Transfers Pending (int? investor);
 
         /// <summary>
         /// 
@@ -90,7 +90,7 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="investor"></param>
         /// <returns>ApiResponse of Transfers</returns>
-        ApiResponse<Transfers> FundsPendingWithHttpInfo (int? investor);
+        ApiResponse<Transfers> PendingWithHttpInfo (int? investor);
         /// <summary>
         /// 
         /// </summary>
@@ -101,7 +101,7 @@ namespace IO.Swagger.Api
         /// <param name="investor"></param>
         /// <param name="request"></param>
         /// <returns>ScheduledTransfer</returns>
-        ScheduledTransfer FundsWithdraw (int? investor, ScheduledTransfer request);
+        ScheduledTransfer Withdraw (int? investor, ScheduledTransfer request);
 
         /// <summary>
         /// 
@@ -113,7 +113,7 @@ namespace IO.Swagger.Api
         /// <param name="investor"></param>
         /// <param name="request"></param>
         /// <returns>ApiResponse of ScheduledTransfer</returns>
-        ApiResponse<ScheduledTransfer> FundsWithdrawWithHttpInfo (int? investor, ScheduledTransfer request);
+        ApiResponse<ScheduledTransfer> WithdrawWithHttpInfo (int? investor, ScheduledTransfer request);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -126,7 +126,7 @@ namespace IO.Swagger.Api
         /// <param name="investor"></param>
         /// <param name="request"></param>
         /// <returns>Task of ScheduledTransfer</returns>
-        System.Threading.Tasks.Task<ScheduledTransfer> FundsAddAsync (int? investor, ScheduledTransfer request);
+        System.Threading.Tasks.Task<ScheduledTransfer> AddAsync (int? investor, ScheduledTransfer request);
 
         /// <summary>
         /// 
@@ -138,7 +138,7 @@ namespace IO.Swagger.Api
         /// <param name="investor"></param>
         /// <param name="request"></param>
         /// <returns>Task of ApiResponse (ScheduledTransfer)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ScheduledTransfer>> FundsAddAsyncWithHttpInfo (int? investor, ScheduledTransfer request);
+        System.Threading.Tasks.Task<ApiResponse<ScheduledTransfer>> AddAsyncWithHttpInfo (int? investor, ScheduledTransfer request);
         /// <summary>
         /// 
         /// </summary>
@@ -149,7 +149,7 @@ namespace IO.Swagger.Api
         /// <param name="investor"></param>
         /// <param name="request"></param>
         /// <returns>Task of CancelTransferResponse</returns>
-        System.Threading.Tasks.Task<CancelTransferResponse> FundsCancelAsync (int? investor, CancelTransferRequest request);
+        System.Threading.Tasks.Task<CancelTransferResponse> CancelAsync (int? investor, CancelTransferRequest request);
 
         /// <summary>
         /// 
@@ -161,7 +161,7 @@ namespace IO.Swagger.Api
         /// <param name="investor"></param>
         /// <param name="request"></param>
         /// <returns>Task of ApiResponse (CancelTransferResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CancelTransferResponse>> FundsCancelAsyncWithHttpInfo (int? investor, CancelTransferRequest request);
+        System.Threading.Tasks.Task<ApiResponse<CancelTransferResponse>> CancelAsyncWithHttpInfo (int? investor, CancelTransferRequest request);
         /// <summary>
         /// 
         /// </summary>
@@ -171,7 +171,7 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="investor"></param>
         /// <returns>Task of Transfers</returns>
-        System.Threading.Tasks.Task<Transfers> FundsPendingAsync (int? investor);
+        System.Threading.Tasks.Task<Transfers> PendingAsync (int? investor);
 
         /// <summary>
         /// 
@@ -182,7 +182,7 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="investor"></param>
         /// <returns>Task of ApiResponse (Transfers)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Transfers>> FundsPendingAsyncWithHttpInfo (int? investor);
+        System.Threading.Tasks.Task<ApiResponse<Transfers>> PendingAsyncWithHttpInfo (int? investor);
         /// <summary>
         /// 
         /// </summary>
@@ -193,7 +193,7 @@ namespace IO.Swagger.Api
         /// <param name="investor"></param>
         /// <param name="request"></param>
         /// <returns>Task of ScheduledTransfer</returns>
-        System.Threading.Tasks.Task<ScheduledTransfer> FundsWithdrawAsync (int? investor, ScheduledTransfer request);
+        System.Threading.Tasks.Task<ScheduledTransfer> WithdrawAsync (int? investor, ScheduledTransfer request);
 
         /// <summary>
         /// 
@@ -205,7 +205,7 @@ namespace IO.Swagger.Api
         /// <param name="investor"></param>
         /// <param name="request"></param>
         /// <returns>Task of ApiResponse (ScheduledTransfer)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ScheduledTransfer>> FundsWithdrawAsyncWithHttpInfo (int? investor, ScheduledTransfer request);
+        System.Threading.Tasks.Task<ApiResponse<ScheduledTransfer>> WithdrawAsyncWithHttpInfo (int? investor, ScheduledTransfer request);
         #endregion Asynchronous Operations
     }
 
@@ -313,9 +313,9 @@ namespace IO.Swagger.Api
         /// <param name="investor"></param>
         /// <param name="request"></param>
         /// <returns>ScheduledTransfer</returns>
-        public ScheduledTransfer FundsAdd (int? investor, ScheduledTransfer request)
+        public ScheduledTransfer Add (int? investor, ScheduledTransfer request)
         {
-             ApiResponse<ScheduledTransfer> localVarResponse = FundsAddWithHttpInfo(investor, request);
+             ApiResponse<ScheduledTransfer> localVarResponse = AddWithHttpInfo(investor, request);
              return localVarResponse.Data;
         }
 
@@ -326,14 +326,14 @@ namespace IO.Swagger.Api
         /// <param name="investor"></param>
         /// <param name="request"></param>
         /// <returns>ApiResponse of ScheduledTransfer</returns>
-        public ApiResponse< ScheduledTransfer > FundsAddWithHttpInfo (int? investor, ScheduledTransfer request)
+        public ApiResponse< ScheduledTransfer > AddWithHttpInfo (int? investor, ScheduledTransfer request)
         {
             // verify the required parameter 'investor' is set
             if (investor == null)
-                throw new ApiException(400, "Missing required parameter 'investor' when calling FundsApi->FundsAdd");
+                throw new ApiException(400, "Missing required parameter 'investor' when calling FundsApi->Add");
             // verify the required parameter 'request' is set
             if (request == null)
-                throw new ApiException(400, "Missing required parameter 'request' when calling FundsApi->FundsAdd");
+                throw new ApiException(400, "Missing required parameter 'request' when calling FundsApi->Add");
 
             var localVarPath = "/accounts/{investor}/funds/add";
             var localVarPathParams = new Dictionary<String, String>();
@@ -382,7 +382,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("FundsAdd", localVarResponse);
+                Exception exception = ExceptionFactory("Add", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -398,9 +398,9 @@ namespace IO.Swagger.Api
         /// <param name="investor"></param>
         /// <param name="request"></param>
         /// <returns>Task of ScheduledTransfer</returns>
-        public async System.Threading.Tasks.Task<ScheduledTransfer> FundsAddAsync (int? investor, ScheduledTransfer request)
+        public async System.Threading.Tasks.Task<ScheduledTransfer> AddAsync (int? investor, ScheduledTransfer request)
         {
-             ApiResponse<ScheduledTransfer> localVarResponse = await FundsAddAsyncWithHttpInfo(investor, request);
+             ApiResponse<ScheduledTransfer> localVarResponse = await AddAsyncWithHttpInfo(investor, request);
              return localVarResponse.Data;
 
         }
@@ -412,14 +412,14 @@ namespace IO.Swagger.Api
         /// <param name="investor"></param>
         /// <param name="request"></param>
         /// <returns>Task of ApiResponse (ScheduledTransfer)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ScheduledTransfer>> FundsAddAsyncWithHttpInfo (int? investor, ScheduledTransfer request)
+        public async System.Threading.Tasks.Task<ApiResponse<ScheduledTransfer>> AddAsyncWithHttpInfo (int? investor, ScheduledTransfer request)
         {
             // verify the required parameter 'investor' is set
             if (investor == null)
-                throw new ApiException(400, "Missing required parameter 'investor' when calling FundsApi->FundsAdd");
+                throw new ApiException(400, "Missing required parameter 'investor' when calling FundsApi->Add");
             // verify the required parameter 'request' is set
             if (request == null)
-                throw new ApiException(400, "Missing required parameter 'request' when calling FundsApi->FundsAdd");
+                throw new ApiException(400, "Missing required parameter 'request' when calling FundsApi->Add");
 
             var localVarPath = "/accounts/{investor}/funds/add";
             var localVarPathParams = new Dictionary<String, String>();
@@ -468,7 +468,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("FundsAdd", localVarResponse);
+                Exception exception = ExceptionFactory("Add", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -484,9 +484,9 @@ namespace IO.Swagger.Api
         /// <param name="investor"></param>
         /// <param name="request"></param>
         /// <returns>CancelTransferResponse</returns>
-        public CancelTransferResponse FundsCancel (int? investor, CancelTransferRequest request)
+        public CancelTransferResponse Cancel (int? investor, CancelTransferRequest request)
         {
-             ApiResponse<CancelTransferResponse> localVarResponse = FundsCancelWithHttpInfo(investor, request);
+             ApiResponse<CancelTransferResponse> localVarResponse = CancelWithHttpInfo(investor, request);
              return localVarResponse.Data;
         }
 
@@ -497,14 +497,14 @@ namespace IO.Swagger.Api
         /// <param name="investor"></param>
         /// <param name="request"></param>
         /// <returns>ApiResponse of CancelTransferResponse</returns>
-        public ApiResponse< CancelTransferResponse > FundsCancelWithHttpInfo (int? investor, CancelTransferRequest request)
+        public ApiResponse< CancelTransferResponse > CancelWithHttpInfo (int? investor, CancelTransferRequest request)
         {
             // verify the required parameter 'investor' is set
             if (investor == null)
-                throw new ApiException(400, "Missing required parameter 'investor' when calling FundsApi->FundsCancel");
+                throw new ApiException(400, "Missing required parameter 'investor' when calling FundsApi->Cancel");
             // verify the required parameter 'request' is set
             if (request == null)
-                throw new ApiException(400, "Missing required parameter 'request' when calling FundsApi->FundsCancel");
+                throw new ApiException(400, "Missing required parameter 'request' when calling FundsApi->Cancel");
 
             var localVarPath = "/accounts/{investor}/funds/cancel";
             var localVarPathParams = new Dictionary<String, String>();
@@ -553,7 +553,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("FundsCancel", localVarResponse);
+                Exception exception = ExceptionFactory("Cancel", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -569,9 +569,9 @@ namespace IO.Swagger.Api
         /// <param name="investor"></param>
         /// <param name="request"></param>
         /// <returns>Task of CancelTransferResponse</returns>
-        public async System.Threading.Tasks.Task<CancelTransferResponse> FundsCancelAsync (int? investor, CancelTransferRequest request)
+        public async System.Threading.Tasks.Task<CancelTransferResponse> CancelAsync (int? investor, CancelTransferRequest request)
         {
-             ApiResponse<CancelTransferResponse> localVarResponse = await FundsCancelAsyncWithHttpInfo(investor, request);
+             ApiResponse<CancelTransferResponse> localVarResponse = await CancelAsyncWithHttpInfo(investor, request);
              return localVarResponse.Data;
 
         }
@@ -583,14 +583,14 @@ namespace IO.Swagger.Api
         /// <param name="investor"></param>
         /// <param name="request"></param>
         /// <returns>Task of ApiResponse (CancelTransferResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<CancelTransferResponse>> FundsCancelAsyncWithHttpInfo (int? investor, CancelTransferRequest request)
+        public async System.Threading.Tasks.Task<ApiResponse<CancelTransferResponse>> CancelAsyncWithHttpInfo (int? investor, CancelTransferRequest request)
         {
             // verify the required parameter 'investor' is set
             if (investor == null)
-                throw new ApiException(400, "Missing required parameter 'investor' when calling FundsApi->FundsCancel");
+                throw new ApiException(400, "Missing required parameter 'investor' when calling FundsApi->Cancel");
             // verify the required parameter 'request' is set
             if (request == null)
-                throw new ApiException(400, "Missing required parameter 'request' when calling FundsApi->FundsCancel");
+                throw new ApiException(400, "Missing required parameter 'request' when calling FundsApi->Cancel");
 
             var localVarPath = "/accounts/{investor}/funds/cancel";
             var localVarPathParams = new Dictionary<String, String>();
@@ -639,7 +639,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("FundsCancel", localVarResponse);
+                Exception exception = ExceptionFactory("Cancel", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -654,9 +654,9 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="investor"></param>
         /// <returns>Transfers</returns>
-        public Transfers FundsPending (int? investor)
+        public Transfers Pending (int? investor)
         {
-             ApiResponse<Transfers> localVarResponse = FundsPendingWithHttpInfo(investor);
+             ApiResponse<Transfers> localVarResponse = PendingWithHttpInfo(investor);
              return localVarResponse.Data;
         }
 
@@ -666,11 +666,11 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="investor"></param>
         /// <returns>ApiResponse of Transfers</returns>
-        public ApiResponse< Transfers > FundsPendingWithHttpInfo (int? investor)
+        public ApiResponse< Transfers > PendingWithHttpInfo (int? investor)
         {
             // verify the required parameter 'investor' is set
             if (investor == null)
-                throw new ApiException(400, "Missing required parameter 'investor' when calling FundsApi->FundsPending");
+                throw new ApiException(400, "Missing required parameter 'investor' when calling FundsApi->Pending");
 
             var localVarPath = "/accounts/{investor}/funds/pending";
             var localVarPathParams = new Dictionary<String, String>();
@@ -711,7 +711,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("FundsPending", localVarResponse);
+                Exception exception = ExceptionFactory("Pending", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -726,9 +726,9 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="investor"></param>
         /// <returns>Task of Transfers</returns>
-        public async System.Threading.Tasks.Task<Transfers> FundsPendingAsync (int? investor)
+        public async System.Threading.Tasks.Task<Transfers> PendingAsync (int? investor)
         {
-             ApiResponse<Transfers> localVarResponse = await FundsPendingAsyncWithHttpInfo(investor);
+             ApiResponse<Transfers> localVarResponse = await PendingAsyncWithHttpInfo(investor);
              return localVarResponse.Data;
 
         }
@@ -739,11 +739,11 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="investor"></param>
         /// <returns>Task of ApiResponse (Transfers)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Transfers>> FundsPendingAsyncWithHttpInfo (int? investor)
+        public async System.Threading.Tasks.Task<ApiResponse<Transfers>> PendingAsyncWithHttpInfo (int? investor)
         {
             // verify the required parameter 'investor' is set
             if (investor == null)
-                throw new ApiException(400, "Missing required parameter 'investor' when calling FundsApi->FundsPending");
+                throw new ApiException(400, "Missing required parameter 'investor' when calling FundsApi->Pending");
 
             var localVarPath = "/accounts/{investor}/funds/pending";
             var localVarPathParams = new Dictionary<String, String>();
@@ -784,7 +784,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("FundsPending", localVarResponse);
+                Exception exception = ExceptionFactory("Pending", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -800,9 +800,9 @@ namespace IO.Swagger.Api
         /// <param name="investor"></param>
         /// <param name="request"></param>
         /// <returns>ScheduledTransfer</returns>
-        public ScheduledTransfer FundsWithdraw (int? investor, ScheduledTransfer request)
+        public ScheduledTransfer Withdraw (int? investor, ScheduledTransfer request)
         {
-             ApiResponse<ScheduledTransfer> localVarResponse = FundsWithdrawWithHttpInfo(investor, request);
+             ApiResponse<ScheduledTransfer> localVarResponse = WithdrawWithHttpInfo(investor, request);
              return localVarResponse.Data;
         }
 
@@ -813,14 +813,14 @@ namespace IO.Swagger.Api
         /// <param name="investor"></param>
         /// <param name="request"></param>
         /// <returns>ApiResponse of ScheduledTransfer</returns>
-        public ApiResponse< ScheduledTransfer > FundsWithdrawWithHttpInfo (int? investor, ScheduledTransfer request)
+        public ApiResponse< ScheduledTransfer > WithdrawWithHttpInfo (int? investor, ScheduledTransfer request)
         {
             // verify the required parameter 'investor' is set
             if (investor == null)
-                throw new ApiException(400, "Missing required parameter 'investor' when calling FundsApi->FundsWithdraw");
+                throw new ApiException(400, "Missing required parameter 'investor' when calling FundsApi->Withdraw");
             // verify the required parameter 'request' is set
             if (request == null)
-                throw new ApiException(400, "Missing required parameter 'request' when calling FundsApi->FundsWithdraw");
+                throw new ApiException(400, "Missing required parameter 'request' when calling FundsApi->Withdraw");
 
             var localVarPath = "/accounts/{investor}/funds/withdraw";
             var localVarPathParams = new Dictionary<String, String>();
@@ -869,7 +869,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("FundsWithdraw", localVarResponse);
+                Exception exception = ExceptionFactory("Withdraw", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -885,9 +885,9 @@ namespace IO.Swagger.Api
         /// <param name="investor"></param>
         /// <param name="request"></param>
         /// <returns>Task of ScheduledTransfer</returns>
-        public async System.Threading.Tasks.Task<ScheduledTransfer> FundsWithdrawAsync (int? investor, ScheduledTransfer request)
+        public async System.Threading.Tasks.Task<ScheduledTransfer> WithdrawAsync (int? investor, ScheduledTransfer request)
         {
-             ApiResponse<ScheduledTransfer> localVarResponse = await FundsWithdrawAsyncWithHttpInfo(investor, request);
+             ApiResponse<ScheduledTransfer> localVarResponse = await WithdrawAsyncWithHttpInfo(investor, request);
              return localVarResponse.Data;
 
         }
@@ -899,14 +899,14 @@ namespace IO.Swagger.Api
         /// <param name="investor"></param>
         /// <param name="request"></param>
         /// <returns>Task of ApiResponse (ScheduledTransfer)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ScheduledTransfer>> FundsWithdrawAsyncWithHttpInfo (int? investor, ScheduledTransfer request)
+        public async System.Threading.Tasks.Task<ApiResponse<ScheduledTransfer>> WithdrawAsyncWithHttpInfo (int? investor, ScheduledTransfer request)
         {
             // verify the required parameter 'investor' is set
             if (investor == null)
-                throw new ApiException(400, "Missing required parameter 'investor' when calling FundsApi->FundsWithdraw");
+                throw new ApiException(400, "Missing required parameter 'investor' when calling FundsApi->Withdraw");
             // verify the required parameter 'request' is set
             if (request == null)
-                throw new ApiException(400, "Missing required parameter 'request' when calling FundsApi->FundsWithdraw");
+                throw new ApiException(400, "Missing required parameter 'request' when calling FundsApi->Withdraw");
 
             var localVarPath = "/accounts/{investor}/funds/withdraw";
             var localVarPathParams = new Dictionary<String, String>();
@@ -955,7 +955,7 @@ namespace IO.Swagger.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("FundsWithdraw", localVarResponse);
+                Exception exception = ExceptionFactory("Withdraw", localVarResponse);
                 if (exception != null) throw exception;
             }
 
