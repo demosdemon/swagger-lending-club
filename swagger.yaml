@@ -79,13 +79,7 @@ paths:
         200:
           description: The pending fund transfers for the investor's account
           schema:
-            type: object
-            additionalProperties: false
-            properties:
-              transfers:
-                type: array
-                items:
-                  $ref: '#/definitions/Transfer'
+            $ref: '#/definitions/Transfers'
   /accounts/{investor}/funds/cancel:
     post:
       tags: [Accounts, Funds]
@@ -109,13 +103,7 @@ paths:
         200:
           description: A list of notes that are owned by the investor.
           schema:
-            type: object
-            additionalProperties: false
-            properties:
-              myNotes:
-                type: array
-                items:
-                  $ref: '#/definitions/Note'
+            $ref: '#/definitions/NotesOwned'
   /accounts/{investor}/detailednotes:
     get:
       tags: [Accounts]
@@ -130,13 +118,7 @@ paths:
         200:
           description: A list of notes that are owned by the investor.
           schema:
-            type: object
-            additionalProperties: false
-            properties:
-              myNotes:
-                type: array
-                items:
-                  $ref: '#/definitions/DetailedNote'
+            $ref: '#/definitions/DetailedNotesOwned'
   /accounts/{investor}/portfolios:
     get:
       tags: [Accounts]
@@ -145,13 +127,7 @@ paths:
         200:
           description: List of portfolios
           schema:
-            type: object
-            additionalProperties: false
-            properties:
-              myPortfolios:
-                type: array
-                items:
-                  $ref: '#/definitions/Portfolio'
+            $ref: '#/definitions/PortfoliosOwned'
     post:
       tags: [Accounts]
       operationId: CreatePortfolio
@@ -214,16 +190,7 @@ paths:
         200:
           description: Loans on sale
           schema:
-            type: object
-            additionalProperties: false
-            properties:
-              asOfDate:
-                type: string
-                format: date-time
-              loans:
-                type: array
-                items:
-                  $ref: '#/definitions/ListedLoan'
+            $ref: '#/definitions/ListedLoans'
 definitions:
   AccountSummary:
     type: object
@@ -381,6 +348,14 @@ definitions:
       - LOAD_ON_DAY_1_AND_16
       - LOAD_MONTHLY
     description: Frequency of transfer
+  Transfers:
+    type: object
+    additionalProperties: false
+    properties:
+      transfers:
+        type: array
+        items:
+          $ref: '#/definitions/Transfer'
   Transfer:
     type: object
     additionalProperties: false
@@ -453,6 +428,14 @@ definitions:
           - CANCELLED
       message:
         type: string
+  NotesOwned:
+    type: object
+    additionalProperties: false
+    properties:
+      myNotes:
+        type: array
+        items:
+          $ref: '#/definitions/Note'
   Note:
     type: object
     additionalProperties: false
@@ -511,6 +494,14 @@ definitions:
     type: string
     enum: [A, B, C, D, E, F, G, A1, A2, A3, A4, A5, B1, B2, B3, B4, B5, C1, C2, C3,
     C4, C5, D1, D2, D3, D4, D5, E1, E2, E3, E4, E5, G1, G2, G3, G4, G5]
+  DetailedNotesOwned:
+    type: object
+    additionalProperties: false
+    properties:
+      myNotes:
+        type: array
+        items:
+          $ref: '#/definitions/DetailedNote'
   DetailedNote:
     allOf:
       - $ref: '#/definitions/Note'
@@ -570,6 +561,14 @@ definitions:
       - UP
       - FLAT
       - DOWN
+  PortfoliosOwned:
+    type: object
+    additionalProperties: false
+    properties:
+      myPortfolios:
+        type: array
+        items:
+          $ref: '#/definitions/Portfolio'
   Portfolio:
     type: object
     additionalProperties: false
@@ -681,6 +680,17 @@ definitions:
       - NOT_VERIFIED
       - SOURCE_VERIFIED
       - VERIFIED
+  ListedLoans:
+    type: object
+    additionalProperties: false
+    properties:
+      asOfDate:
+        type: string
+        format: date-time
+      loans:
+        type: array
+        items:
+          $ref: '#/definitions/ListedLoan'
   ListedLoan:
     type: object
     additionalProperties: true
