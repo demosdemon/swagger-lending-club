@@ -33,14 +33,43 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SellNotesRequest" /> class.
         /// </summary>
-        /// <param name="Aid">The investor id.</param>
-        /// <param name="ExpireDate">ExpireDate.</param>
-        /// <param name="Notes">Notes.</param>
+        [JsonConstructorAttribute]
+        protected SellNotesRequest() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SellNotesRequest" /> class.
+        /// </summary>
+        /// <param name="Aid">The investor id (required).</param>
+        /// <param name="ExpireDate">ExpireDate (required).</param>
+        /// <param name="Notes">Notes (required).</param>
         public SellNotesRequest(int? Aid = default(int?), DateTime? ExpireDate = default(DateTime?), List<SellNote> Notes = default(List<SellNote>))
         {
-            this.Aid = Aid;
-            this.ExpireDate = ExpireDate;
-            this.Notes = Notes;
+            // to ensure "Aid" is required (not null)
+            if (Aid == null)
+            {
+                throw new InvalidDataException("Aid is a required property for SellNotesRequest and cannot be null");
+            }
+            else
+            {
+                this.Aid = Aid;
+            }
+            // to ensure "ExpireDate" is required (not null)
+            if (ExpireDate == null)
+            {
+                throw new InvalidDataException("ExpireDate is a required property for SellNotesRequest and cannot be null");
+            }
+            else
+            {
+                this.ExpireDate = ExpireDate;
+            }
+            // to ensure "Notes" is required (not null)
+            if (Notes == null)
+            {
+                throw new InvalidDataException("Notes is a required property for SellNotesRequest and cannot be null");
+            }
+            else
+            {
+                this.Notes = Notes;
+            }
         }
         
         /// <summary>

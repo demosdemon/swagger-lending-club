@@ -31,153 +31,56 @@ namespace IO.Swagger.Model
     public partial class SellNote :  IEquatable<SellNote>, IValidatableObject
     {
         /// <summary>
-        /// Gets or Sets ExecutionStatus
+        /// Initializes a new instance of the <see cref="SellNote" /> class.
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum ExecutionStatusEnum
-        {
-            
-            /// <summary>
-            /// Enum SUCCESSLISTINGFORSALE for "SUCCESS_LISTING_FOR_SALE"
-            /// </summary>
-            [EnumMember(Value = "SUCCESS_LISTING_FOR_SALE")]
-            SUCCESSLISTINGFORSALE = 1,
-            
-            /// <summary>
-            /// Enum NOTENOTAVAILABLE for "NOTE_NOT_AVAILABLE"
-            /// </summary>
-            [EnumMember(Value = "NOTE_NOT_AVAILABLE")]
-            NOTENOTAVAILABLE = 2,
-            
-            /// <summary>
-            /// Enum INVALIDORDEREXPIRATIONDATE for "INVALID_ORDER_EXPIRATION_DATE"
-            /// </summary>
-            [EnumMember(Value = "INVALID_ORDER_EXPIRATION_DATE")]
-            INVALIDORDEREXPIRATIONDATE = 3,
-            
-            /// <summary>
-            /// Enum DATETOOEARLY for "DATE_TOO_EARLY"
-            /// </summary>
-            [EnumMember(Value = "DATE_TOO_EARLY")]
-            DATETOOEARLY = 4,
-            
-            /// <summary>
-            /// Enum DATETOOLATE for "DATE_TOO_LATE"
-            /// </summary>
-            [EnumMember(Value = "DATE_TOO_LATE")]
-            DATETOOLATE = 5,
-            
-            /// <summary>
-            /// Enum UNKNOWNERROR for "UNKNOWN_ERROR"
-            /// </summary>
-            [EnumMember(Value = "UNKNOWN_ERROR")]
-            UNKNOWNERROR = 6,
-            
-            /// <summary>
-            /// Enum ASKINGPRICEMUSTBEPOSITIVE for "ASKING_PRICE_MUST_BE_POSITIVE"
-            /// </summary>
-            [EnumMember(Value = "ASKING_PRICE_MUST_BE_POSITIVE")]
-            ASKINGPRICEMUSTBEPOSITIVE = 7,
-            
-            /// <summary>
-            /// Enum ASKINGPRICEISTOOHIGH for "ASKING_PRICE_IS_TOO_HIGH"
-            /// </summary>
-            [EnumMember(Value = "ASKING_PRICE_IS_TOO_HIGH")]
-            ASKINGPRICEISTOOHIGH = 8,
-            
-            /// <summary>
-            /// Enum ASKINGPRICEMUSTBEVALID for "ASKING_PRICE_MUST_BE_VALID"
-            /// </summary>
-            [EnumMember(Value = "ASKING_PRICE_MUST_BE_VALID")]
-            ASKINGPRICEMUSTBEVALID = 9,
-            
-            /// <summary>
-            /// Enum ASKINGPRICEVALIDATIONERROR for "ASKING_PRICE_VALIDATION_ERROR"
-            /// </summary>
-            [EnumMember(Value = "ASKING_PRICE_VALIDATION_ERROR")]
-            ASKINGPRICEVALIDATIONERROR = 10,
-            
-            /// <summary>
-            /// Enum NEGATIVEYTMFORASKINGPRICE for "NEGATIVE_YTM_FOR_ASKING_PRICE"
-            /// </summary>
-            [EnumMember(Value = "NEGATIVE_YTM_FOR_ASKING_PRICE")]
-            NEGATIVEYTMFORASKINGPRICE = 11,
-            
-            /// <summary>
-            /// Enum CANNOTSELLNOTEINPAYMENTPROCESSING for "CANNOT_SELL_NOTE_IN_PAYMENT_PROCESSING"
-            /// </summary>
-            [EnumMember(Value = "CANNOT_SELL_NOTE_IN_PAYMENT_PROCESSING")]
-            CANNOTSELLNOTEINPAYMENTPROCESSING = 12,
-            
-            /// <summary>
-            /// Enum ALREADYSOLD for "ALREADY_SOLD"
-            /// </summary>
-            [EnumMember(Value = "ALREADY_SOLD")]
-            ALREADYSOLD = 13,
-            
-            /// <summary>
-            /// Enum CANNOTSELLNOTES for "CANNOT_SELL_NOTES"
-            /// </summary>
-            [EnumMember(Value = "CANNOT_SELL_NOTES")]
-            CANNOTSELLNOTES = 14,
-            
-            /// <summary>
-            /// Enum NOTESARENOTYOURS for "NOTES_ARE_NOT_YOURS"
-            /// </summary>
-            [EnumMember(Value = "NOTES_ARE_NOT_YOURS")]
-            NOTESARENOTYOURS = 15,
-            
-            /// <summary>
-            /// Enum INVALIDSELLPRICE for "INVALID_SELL_PRICE"
-            /// </summary>
-            [EnumMember(Value = "INVALID_SELL_PRICE")]
-            INVALIDSELLPRICE = 16,
-            
-            /// <summary>
-            /// Enum UNEXPECTEDERROR for "UNEXPECTED_ERROR"
-            /// </summary>
-            [EnumMember(Value = "UNEXPECTED_ERROR")]
-            UNEXPECTEDERROR = 17,
-            
-            /// <summary>
-            /// Enum PENDINGBANKRUPTCY for "PENDING_BANKRUPTCY"
-            /// </summary>
-            [EnumMember(Value = "PENDING_BANKRUPTCY")]
-            PENDINGBANKRUPTCY = 18,
-            
-            /// <summary>
-            /// Enum NOTEDOESNOTEXIST for "NOTE_DOES_NOT_EXIST"
-            /// </summary>
-            [EnumMember(Value = "NOTE_DOES_NOT_EXIST")]
-            NOTEDOESNOTEXIST = 19,
-            
-            /// <summary>
-            /// Enum NOTENOTISSUED for "NOTE_NOT_ISSUED"
-            /// </summary>
-            [EnumMember(Value = "NOTE_NOT_ISSUED")]
-            NOTENOTISSUED = 20
-        }
-
-
-        /// <summary>
-        /// Gets or Sets ExecutionStatus
-        /// </summary>
-        [DataMember(Name="executionStatus", EmitDefaultValue=false)]
-        public List<ExecutionStatusEnum> ExecutionStatus { get; set; }
+        [JsonConstructorAttribute]
+        protected SellNote() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="SellNote" /> class.
         /// </summary>
-        /// <param name="LoanId">LoanId.</param>
-        /// <param name="OrderId">OrderId.</param>
-        /// <param name="NoteId">NoteId.</param>
-        /// <param name="AskingPrice">AskingPrice.</param>
+        /// <param name="LoanId">LoanId (required).</param>
+        /// <param name="OrderId">OrderId (required).</param>
+        /// <param name="NoteId">NoteId (required).</param>
+        /// <param name="AskingPrice">AskingPrice (required).</param>
         /// <param name="ExecutionStatus">ExecutionStatus.</param>
-        public SellNote(int? LoanId = default(int?), int? OrderId = default(int?), int? NoteId = default(int?), decimal? AskingPrice = default(decimal?), List<ExecutionStatusEnum> ExecutionStatus = default(List<ExecutionStatusEnum>))
+        public SellNote(int? LoanId = default(int?), int? OrderId = default(int?), int? NoteId = default(int?), decimal? AskingPrice = default(decimal?), List<SellNoteExecutionStatus> ExecutionStatus = default(List<SellNoteExecutionStatus>))
         {
-            this.LoanId = LoanId;
-            this.OrderId = OrderId;
-            this.NoteId = NoteId;
-            this.AskingPrice = AskingPrice;
+            // to ensure "LoanId" is required (not null)
+            if (LoanId == null)
+            {
+                throw new InvalidDataException("LoanId is a required property for SellNote and cannot be null");
+            }
+            else
+            {
+                this.LoanId = LoanId;
+            }
+            // to ensure "OrderId" is required (not null)
+            if (OrderId == null)
+            {
+                throw new InvalidDataException("OrderId is a required property for SellNote and cannot be null");
+            }
+            else
+            {
+                this.OrderId = OrderId;
+            }
+            // to ensure "NoteId" is required (not null)
+            if (NoteId == null)
+            {
+                throw new InvalidDataException("NoteId is a required property for SellNote and cannot be null");
+            }
+            else
+            {
+                this.NoteId = NoteId;
+            }
+            // to ensure "AskingPrice" is required (not null)
+            if (AskingPrice == null)
+            {
+                throw new InvalidDataException("AskingPrice is a required property for SellNote and cannot be null");
+            }
+            else
+            {
+                this.AskingPrice = AskingPrice;
+            }
             this.ExecutionStatus = ExecutionStatus;
         }
         
@@ -205,6 +108,11 @@ namespace IO.Swagger.Model
         [DataMember(Name="askingPrice", EmitDefaultValue=false)]
         public decimal? AskingPrice { get; set; }
 
+        /// <summary>
+        /// Gets or Sets ExecutionStatus
+        /// </summary>
+        [DataMember(Name="executionStatus", EmitDefaultValue=false)]
+        public List<SellNoteExecutionStatus> ExecutionStatus { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

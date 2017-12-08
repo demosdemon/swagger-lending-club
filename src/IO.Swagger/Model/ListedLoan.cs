@@ -43,40 +43,8 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Gets or Sets HomeOwnership
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum HomeOwnershipEnum
-        {
-            
-            /// <summary>
-            /// Enum RENT for "RENT"
-            /// </summary>
-            [EnumMember(Value = "RENT")]
-            RENT = 1,
-            
-            /// <summary>
-            /// Enum OWN for "OWN"
-            /// </summary>
-            [EnumMember(Value = "OWN")]
-            OWN = 2,
-            
-            /// <summary>
-            /// Enum MORTGAGE for "MORTGAGE"
-            /// </summary>
-            [EnumMember(Value = "MORTGAGE")]
-            MORTGAGE = 3,
-            
-            /// <summary>
-            /// Enum OTHER for "OTHER"
-            /// </summary>
-            [EnumMember(Value = "OTHER")]
-            OTHER = 4
-        }
-
-        /// <summary>
-        /// Gets or Sets HomeOwnership
-        /// </summary>
         [DataMember(Name="homeOwnership", EmitDefaultValue=false)]
-        public HomeOwnershipEnum? HomeOwnership { get; set; }
+        public HomeOwnership? HomeOwnership { get; set; }
         /// <summary>
         /// Gets or Sets IsIncV
         /// </summary>
@@ -85,144 +53,18 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Gets or Sets ReviewStatus
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum ReviewStatusEnum
-        {
-            
-            /// <summary>
-            /// Enum APPROVED for "APPROVED"
-            /// </summary>
-            [EnumMember(Value = "APPROVED")]
-            APPROVED = 1,
-            
-            /// <summary>
-            /// Enum NOTAPPROVED for "NOT_APPROVED"
-            /// </summary>
-            [EnumMember(Value = "NOT_APPROVED")]
-            NOTAPPROVED = 2
-        }
-
-        /// <summary>
-        /// Gets or Sets ReviewStatus
-        /// </summary>
         [DataMember(Name="reviewStatus", EmitDefaultValue=false)]
-        public ReviewStatusEnum? ReviewStatus { get; set; }
-        /// <summary>
-        /// Gets or Sets Purpose
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum PurposeEnum
-        {
-            
-            /// <summary>
-            /// Enum Debtconsolidation for "debt_consolidation"
-            /// </summary>
-            [EnumMember(Value = "debt_consolidation")]
-            Debtconsolidation = 1,
-            
-            /// <summary>
-            /// Enum Medical for "medical"
-            /// </summary>
-            [EnumMember(Value = "medical")]
-            Medical = 2,
-            
-            /// <summary>
-            /// Enum Homeimprovement for "home_improvement"
-            /// </summary>
-            [EnumMember(Value = "home_improvement")]
-            Homeimprovement = 3,
-            
-            /// <summary>
-            /// Enum Renewableenergy for "renewable_energy"
-            /// </summary>
-            [EnumMember(Value = "renewable_energy")]
-            Renewableenergy = 4,
-            
-            /// <summary>
-            /// Enum Smallbusiness for "small_business"
-            /// </summary>
-            [EnumMember(Value = "small_business")]
-            Smallbusiness = 5,
-            
-            /// <summary>
-            /// Enum Wedding for "wedding"
-            /// </summary>
-            [EnumMember(Value = "wedding")]
-            Wedding = 6,
-            
-            /// <summary>
-            /// Enum Vacation for "vacation"
-            /// </summary>
-            [EnumMember(Value = "vacation")]
-            Vacation = 7,
-            
-            /// <summary>
-            /// Enum Moving for "moving"
-            /// </summary>
-            [EnumMember(Value = "moving")]
-            Moving = 8,
-            
-            /// <summary>
-            /// Enum House for "house"
-            /// </summary>
-            [EnumMember(Value = "house")]
-            House = 9,
-            
-            /// <summary>
-            /// Enum Car for "car"
-            /// </summary>
-            [EnumMember(Value = "car")]
-            Car = 10,
-            
-            /// <summary>
-            /// Enum Majorpurchase for "major_purchase"
-            /// </summary>
-            [EnumMember(Value = "major_purchase")]
-            Majorpurchase = 11,
-            
-            /// <summary>
-            /// Enum Creditcard for "credit_card"
-            /// </summary>
-            [EnumMember(Value = "credit_card")]
-            Creditcard = 12,
-            
-            /// <summary>
-            /// Enum Other for "other"
-            /// </summary>
-            [EnumMember(Value = "other")]
-            Other = 13
-        }
-
+        public ReviewStatus? ReviewStatus { get; set; }
         /// <summary>
         /// Gets or Sets Purpose
         /// </summary>
         [DataMember(Name="purpose", EmitDefaultValue=false)]
-        public PurposeEnum? Purpose { get; set; }
-        /// <summary>
-        /// Gets or Sets InitialListStatus
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum InitialListStatusEnum
-        {
-            
-            /// <summary>
-            /// Enum W for "W"
-            /// </summary>
-            [EnumMember(Value = "W")]
-            W = 1,
-            
-            /// <summary>
-            /// Enum F for "F"
-            /// </summary>
-            [EnumMember(Value = "F")]
-            F = 2
-        }
-
+        public Purpose? Purpose { get; set; }
         /// <summary>
         /// Gets or Sets InitialListStatus
         /// </summary>
         [DataMember(Name="initialListStatus", EmitDefaultValue=false)]
-        public InitialListStatusEnum? InitialListStatus { get; set; }
+        public InitialListStatus? InitialListStatus { get; set; }
         /// <summary>
         /// Gets or Sets ApplicationType
         /// </summary>
@@ -359,7 +201,7 @@ namespace IO.Swagger.Model
         /// <param name="SecAppChargeoffWithin12Mths">SecAppChargeoffWithin12Mths.</param>
         /// <param name="SecAppCollections12MthsExMed">SecAppCollections12MthsExMed.</param>
         /// <param name="SecAppMthsSinceLastMajorDerog">SecAppMthsSinceLastMajorDerog.</param>
-        public ListedLoan(int? Id = default(int?), int? MemberId = default(int?), decimal? LoanAmount = default(decimal?), decimal? FundedAmount = default(decimal?), int? Term = default(int?), decimal? IntRate = default(decimal?), decimal? ExpDefaultRate = default(decimal?), decimal? ServiceFeeRate = default(decimal?), decimal? Installment = default(decimal?), LoanGrade? Grade = default(LoanGrade?), LoanGrade? SubGrade = default(LoanGrade?), int? EmpLength = default(int?), HomeOwnershipEnum? HomeOwnership = default(HomeOwnershipEnum?), decimal? AnnualInc = default(decimal?), IncomeVerified? IsIncV = default(IncomeVerified?), DateTime? AcceptD = default(DateTime?), DateTime? ExpD = default(DateTime?), DateTime? ListD = default(DateTime?), DateTime? CreditPullD = default(DateTime?), DateTime? ReviewStatusD = default(DateTime?), ReviewStatusEnum? ReviewStatus = default(ReviewStatusEnum?), string Desc = default(string), PurposeEnum? Purpose = default(PurposeEnum?), string AddrZip = default(string), int? InvestorCount = default(int?), DateTime? IlsExpD = default(DateTime?), InitialListStatusEnum? InitialListStatus = default(InitialListStatusEnum?), string EmpTitle = default(string), int? AccNowDelinq = default(int?), int? AccOpenPast24Mths = default(int?), int? BcOpenToBuy = default(int?), decimal? PercentBcGt75 = default(decimal?), decimal? BcUtil = default(decimal?), decimal? Dti = default(decimal?), int? Delinq2Yrs = default(int?), decimal? DelinqAmnt = default(decimal?), DateTime? EarliestCrLine = default(DateTime?), int? FicoRangeLow = default(int?), int? FicoRangeHigh = default(int?), int? InqLast6Mths = default(int?), int? MthsSinceLastDelinq = default(int?), int? MthsSinceLastRecord = default(int?), int? MthsSinceRecentInq = default(int?), int? MthsSinceRecentBc = default(int?), int? MortAcc = default(int?), int? OpenAcc = default(int?), int? PubRec = default(int?), int? TotalBalExMort = default(int?), decimal? RevolBal = default(decimal?), decimal? RevolUtil = default(decimal?), int? TotalBcLimit = default(int?), int? TotalAcc = default(int?), int? TotalIlHighCreditLimit = default(int?), int? NumRevAccts = default(int?), int? MthsSinceRecentBcDlq = default(int?), int? PubRecBankruptcies = default(int?), int? NumAcctsEver120Ppd = default(int?), int? ChargeoffWithin12Mths = default(int?), int? Collections12MthsExMed = default(int?), int? TaxLiens = default(int?), int? MthsSinceLastMajorDerog = default(int?), int? NumSats = default(int?), int? NumTlOpPast12m = default(int?), int? MoSinRcntTl = default(int?), int? TotHiCredLim = default(int?), int? TotCurBal = default(int?), int? AvgCurBal = default(int?), int? NumActvBcTl = default(int?), int? NumBcSats = default(int?), int? PctTlNvrDlq = default(int?), int? NumTl90gDpd24m = default(int?), int? NumTl30dpd = default(int?), int? NumTl120dpd2m = default(int?), int? NumIlTl = default(int?), int? MoSinOldIlAcct = default(int?), int? NumActvRevTl = default(int?), int? MoSinOldRevTlOp = default(int?), int? MoSinRcntRevTlOp = default(int?), int? TotalRevHiLim = default(int?), int? NumRevTlBalGt0 = default(int?), int? NumOpRevTl = default(int?), int? TotCollAmt = default(int?), ApplicationType? ApplicationType = default(ApplicationType?), DisbursementMethod? DisbursementMethod = default(DisbursementMethod?), decimal? AnnualIncJoint = default(decimal?), decimal? DtiJoint = default(decimal?), IncomeVerified? IsIncVJoint = default(IncomeVerified?), int? OpenAcc6m = default(int?), int? OpenIl6m = default(int?), int? OpenActIl = default(int?), int? OpenIl12m = default(int?), int? OpenIl24m = default(int?), int? MthsSinceRcntIl = default(int?), decimal? TotalBalIl = default(decimal?), decimal? ILUtil = default(decimal?), int? OpenRv12m = default(int?), int? OpenRv24m = default(int?), decimal? MaxBalBc = default(decimal?), decimal? AllUtil = default(decimal?), int? InqFi = default(int?), int? TotalCuTl = default(int?), int? InqLast12m = default(int?), decimal? MtgPayment = default(decimal?), decimal? HousingPayment = default(decimal?), decimal? RevolBalJoint = default(decimal?), int? SecAppFicoRangeLow = default(int?), int? SecAppFicoRangeHigh = default(int?), DateTime? SecAppEarliestCrLine = default(DateTime?), int? SecAppInqLast6Mths = default(int?), int? SecAppMortAcc = default(int?), int? SecAppOpenAcc = default(int?), decimal? SecAppRevolUtil = default(decimal?), int? SecAppOpenIl6m = default(int?), int? SecAppOpenActIl = default(int?), int? SecAppNumRevAccts = default(int?), int? SecAppChargeoffWithin12Mths = default(int?), int? SecAppCollections12MthsExMed = default(int?), int? SecAppMthsSinceLastMajorDerog = default(int?))
+        public ListedLoan(int? Id = default(int?), int? MemberId = default(int?), decimal? LoanAmount = default(decimal?), decimal? FundedAmount = default(decimal?), int? Term = default(int?), decimal? IntRate = default(decimal?), decimal? ExpDefaultRate = default(decimal?), decimal? ServiceFeeRate = default(decimal?), decimal? Installment = default(decimal?), LoanGrade? Grade = default(LoanGrade?), LoanGrade? SubGrade = default(LoanGrade?), int? EmpLength = default(int?), HomeOwnership? HomeOwnership = default(HomeOwnership?), decimal? AnnualInc = default(decimal?), IncomeVerified? IsIncV = default(IncomeVerified?), DateTime? AcceptD = default(DateTime?), DateTime? ExpD = default(DateTime?), DateTime? ListD = default(DateTime?), DateTime? CreditPullD = default(DateTime?), DateTime? ReviewStatusD = default(DateTime?), ReviewStatus? ReviewStatus = default(ReviewStatus?), string Desc = default(string), Purpose? Purpose = default(Purpose?), string AddrZip = default(string), int? InvestorCount = default(int?), DateTime? IlsExpD = default(DateTime?), InitialListStatus? InitialListStatus = default(InitialListStatus?), string EmpTitle = default(string), int? AccNowDelinq = default(int?), int? AccOpenPast24Mths = default(int?), int? BcOpenToBuy = default(int?), decimal? PercentBcGt75 = default(decimal?), decimal? BcUtil = default(decimal?), decimal? Dti = default(decimal?), int? Delinq2Yrs = default(int?), decimal? DelinqAmnt = default(decimal?), DateTime? EarliestCrLine = default(DateTime?), int? FicoRangeLow = default(int?), int? FicoRangeHigh = default(int?), int? InqLast6Mths = default(int?), int? MthsSinceLastDelinq = default(int?), int? MthsSinceLastRecord = default(int?), int? MthsSinceRecentInq = default(int?), int? MthsSinceRecentBc = default(int?), int? MortAcc = default(int?), int? OpenAcc = default(int?), int? PubRec = default(int?), int? TotalBalExMort = default(int?), decimal? RevolBal = default(decimal?), decimal? RevolUtil = default(decimal?), int? TotalBcLimit = default(int?), int? TotalAcc = default(int?), int? TotalIlHighCreditLimit = default(int?), int? NumRevAccts = default(int?), int? MthsSinceRecentBcDlq = default(int?), int? PubRecBankruptcies = default(int?), int? NumAcctsEver120Ppd = default(int?), int? ChargeoffWithin12Mths = default(int?), int? Collections12MthsExMed = default(int?), int? TaxLiens = default(int?), int? MthsSinceLastMajorDerog = default(int?), int? NumSats = default(int?), int? NumTlOpPast12m = default(int?), int? MoSinRcntTl = default(int?), int? TotHiCredLim = default(int?), int? TotCurBal = default(int?), int? AvgCurBal = default(int?), int? NumActvBcTl = default(int?), int? NumBcSats = default(int?), int? PctTlNvrDlq = default(int?), int? NumTl90gDpd24m = default(int?), int? NumTl30dpd = default(int?), int? NumTl120dpd2m = default(int?), int? NumIlTl = default(int?), int? MoSinOldIlAcct = default(int?), int? NumActvRevTl = default(int?), int? MoSinOldRevTlOp = default(int?), int? MoSinRcntRevTlOp = default(int?), int? TotalRevHiLim = default(int?), int? NumRevTlBalGt0 = default(int?), int? NumOpRevTl = default(int?), int? TotCollAmt = default(int?), ApplicationType? ApplicationType = default(ApplicationType?), DisbursementMethod? DisbursementMethod = default(DisbursementMethod?), decimal? AnnualIncJoint = default(decimal?), decimal? DtiJoint = default(decimal?), IncomeVerified? IsIncVJoint = default(IncomeVerified?), int? OpenAcc6m = default(int?), int? OpenIl6m = default(int?), int? OpenActIl = default(int?), int? OpenIl12m = default(int?), int? OpenIl24m = default(int?), int? MthsSinceRcntIl = default(int?), decimal? TotalBalIl = default(decimal?), decimal? ILUtil = default(decimal?), int? OpenRv12m = default(int?), int? OpenRv24m = default(int?), decimal? MaxBalBc = default(decimal?), decimal? AllUtil = default(decimal?), int? InqFi = default(int?), int? TotalCuTl = default(int?), int? InqLast12m = default(int?), decimal? MtgPayment = default(decimal?), decimal? HousingPayment = default(decimal?), decimal? RevolBalJoint = default(decimal?), int? SecAppFicoRangeLow = default(int?), int? SecAppFicoRangeHigh = default(int?), DateTime? SecAppEarliestCrLine = default(DateTime?), int? SecAppInqLast6Mths = default(int?), int? SecAppMortAcc = default(int?), int? SecAppOpenAcc = default(int?), decimal? SecAppRevolUtil = default(decimal?), int? SecAppOpenIl6m = default(int?), int? SecAppOpenActIl = default(int?), int? SecAppNumRevAccts = default(int?), int? SecAppChargeoffWithin12Mths = default(int?), int? SecAppCollections12MthsExMed = default(int?), int? SecAppMthsSinceLastMajorDerog = default(int?))
         {
             this.Id = Id;
             this.MemberId = MemberId;

@@ -31,79 +31,56 @@ namespace IO.Swagger.Model
     public partial class BuyNote :  IEquatable<BuyNote>, IValidatableObject
     {
         /// <summary>
-        /// Gets or Sets ExecutionStatus
+        /// Initializes a new instance of the <see cref="BuyNote" /> class.
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum ExecutionStatusEnum
-        {
-            
-            /// <summary>
-            /// Enum SUCCESSPENDINGSETTLEMENT for "SUCCESS_PENDING_SETTLEMENT"
-            /// </summary>
-            [EnumMember(Value = "SUCCESS_PENDING_SETTLEMENT")]
-            SUCCESSPENDINGSETTLEMENT = 1,
-            
-            /// <summary>
-            /// Enum NOTEALREADYOWNED for "NOTE_ALREADY_OWNED"
-            /// </summary>
-            [EnumMember(Value = "NOTE_ALREADY_OWNED")]
-            NOTEALREADYOWNED = 2,
-            
-            /// <summary>
-            /// Enum NOTEDATASTALE for "NOTE_DATA_STALE"
-            /// </summary>
-            [EnumMember(Value = "NOTE_DATA_STALE")]
-            NOTEDATASTALE = 3,
-            
-            /// <summary>
-            /// Enum NOTENOTAVAILABLE for "NOTE_NOT_AVAILABLE"
-            /// </summary>
-            [EnumMember(Value = "NOTE_NOT_AVAILABLE")]
-            NOTENOTAVAILABLE = 4,
-            
-            /// <summary>
-            /// Enum NOTEDOESNOTEXIST for "NOTE_DOES_NOT_EXIST"
-            /// </summary>
-            [EnumMember(Value = "NOTE_DOES_NOT_EXIST")]
-            NOTEDOESNOTEXIST = 5,
-            
-            /// <summary>
-            /// Enum INSUFFICIENTCASH for "INSUFFICIENT_CASH"
-            /// </summary>
-            [EnumMember(Value = "INSUFFICIENT_CASH")]
-            INSUFFICIENTCASH = 6,
-            
-            /// <summary>
-            /// Enum UNKNOWNERROR for "UNKNOWN_ERROR"
-            /// </summary>
-            [EnumMember(Value = "UNKNOWN_ERROR")]
-            UNKNOWNERROR = 7
-        }
-
-
-        /// <summary>
-        /// Gets or Sets ExecutionStatus
-        /// </summary>
-        [DataMember(Name="executionStatus", EmitDefaultValue=false)]
-        public List<ExecutionStatusEnum> ExecutionStatus { get; set; }
+        [JsonConstructorAttribute]
+        protected BuyNote() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="BuyNote" /> class.
         /// </summary>
-        /// <param name="LoanId">LoanId.</param>
-        /// <param name="OrderId">OrderId.</param>
-        /// <param name="NoteId">NoteId.</param>
-        /// <param name="BidPrice">BidPrice.</param>
-        /// <param name="OutstandingPrincipal">OutstandingPrincipal.</param>
-        /// <param name="YieldToMaturity">YieldToMaturity.</param>
+        /// <param name="LoanId">LoanId (required).</param>
+        /// <param name="OrderId">OrderId (required).</param>
+        /// <param name="NoteId">NoteId (required).</param>
+        /// <param name="BidPrice">BidPrice (required).</param>
         /// <param name="ExecutionStatus">ExecutionStatus.</param>
-        public BuyNote(int? LoanId = default(int?), int? OrderId = default(int?), int? NoteId = default(int?), decimal? BidPrice = default(decimal?), decimal? OutstandingPrincipal = default(decimal?), decimal? YieldToMaturity = default(decimal?), List<ExecutionStatusEnum> ExecutionStatus = default(List<ExecutionStatusEnum>))
+        public BuyNote(int? LoanId = default(int?), int? OrderId = default(int?), int? NoteId = default(int?), decimal? BidPrice = default(decimal?), List<BuyNoteExecutionStatus> ExecutionStatus = default(List<BuyNoteExecutionStatus>))
         {
-            this.LoanId = LoanId;
-            this.OrderId = OrderId;
-            this.NoteId = NoteId;
-            this.BidPrice = BidPrice;
-            this.OutstandingPrincipal = OutstandingPrincipal;
-            this.YieldToMaturity = YieldToMaturity;
+            // to ensure "LoanId" is required (not null)
+            if (LoanId == null)
+            {
+                throw new InvalidDataException("LoanId is a required property for BuyNote and cannot be null");
+            }
+            else
+            {
+                this.LoanId = LoanId;
+            }
+            // to ensure "OrderId" is required (not null)
+            if (OrderId == null)
+            {
+                throw new InvalidDataException("OrderId is a required property for BuyNote and cannot be null");
+            }
+            else
+            {
+                this.OrderId = OrderId;
+            }
+            // to ensure "NoteId" is required (not null)
+            if (NoteId == null)
+            {
+                throw new InvalidDataException("NoteId is a required property for BuyNote and cannot be null");
+            }
+            else
+            {
+                this.NoteId = NoteId;
+            }
+            // to ensure "BidPrice" is required (not null)
+            if (BidPrice == null)
+            {
+                throw new InvalidDataException("BidPrice is a required property for BuyNote and cannot be null");
+            }
+            else
+            {
+                this.BidPrice = BidPrice;
+            }
             this.ExecutionStatus = ExecutionStatus;
         }
         
@@ -141,14 +118,19 @@ namespace IO.Swagger.Model
         /// Gets or Sets OutstandingPrincipal
         /// </summary>
         [DataMember(Name="outstandingPrincipal", EmitDefaultValue=false)]
-        public decimal? OutstandingPrincipal { get; set; }
+        public decimal? OutstandingPrincipal { get; private set; }
 
         /// <summary>
         /// Gets or Sets YieldToMaturity
         /// </summary>
         [DataMember(Name="yieldToMaturity", EmitDefaultValue=false)]
-        public decimal? YieldToMaturity { get; set; }
+        public decimal? YieldToMaturity { get; private set; }
 
+        /// <summary>
+        /// Gets or Sets ExecutionStatus
+        /// </summary>
+        [DataMember(Name="executionStatus", EmitDefaultValue=false)]
+        public List<BuyNoteExecutionStatus> ExecutionStatus { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
